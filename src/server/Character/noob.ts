@@ -1,13 +1,14 @@
 import { ReplicatedStorage, Workspace } from "@rbxts/services";
 import { charoptions } from "./charoptions";
 import { chartype } from "./chartype";
+import { RunService } from "@rbxts/services";
 
 export class Noob {
 	public ctype: chartype;
 	public size: number;
 	public rarity: string;
 	public appearance: string;
-	public speed: number = 2;
+	public speed: number = 5;
 	public animation: string = "WalkAnimation";
 	public model: Model | undefined;
 
@@ -36,21 +37,26 @@ export class Noob {
 		}
 
 		humanoid.WalkSpeed = this.speed;
-	}
 
-	move(speed: number = 2) {}
+		RunService.Heartbeat.Connect(() => {
+			if (!this.model || !humanoid) return;
+
+			const lookVector = (this.model.PrimaryPart as BasePart).CFrame.LookVector;
+			humanoid.Move(new Vector3(lookVector.X, 0, lookVector.Z), false);
+		});
+	}
 }
 
 export class MegaNoob extends Noob {
 	constructor() {
 		super(chartype.MegaNoob, { size: 2, rarity: "Rare", appearance: "MegaNoobModel" });
-		this.speed = 12;
+		this.speed = 5;
 	}
 }
 
 export class NewerNoob extends Noob {
 	constructor() {
 		super(chartype.NewerNoob, { size: 0.8, rarity: "Uncommon", appearance: "NewerNoobModel" });
-		this.speed = 12;
+		this.speed = 5;
 	}
 }

@@ -1,4 +1,5 @@
 import { spawnRandomNoob } from "./Character/noobspawner";
 
-const randomNoob = spawnRandomNoob();
-randomNoob.move();
+spawnRandomNoob();
+task.wait(5);
+spawnRandomNoob();
