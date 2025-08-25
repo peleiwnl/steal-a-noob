@@ -1,3 +1,4 @@
-import { makeHello } from "shared/module";
+import { spawnRandomNoob } from "./Character/noobspawner";
 
-print(makeHello("main.server.ts"));
+const randomNoob = spawnRandomNoob();
+randomNoob.move();
