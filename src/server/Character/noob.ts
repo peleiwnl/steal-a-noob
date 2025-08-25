@@ -22,6 +22,7 @@ export class Noob {
 	}
 
 	private spawnModel() {
+		print("Model spawned");
 		const template = ReplicatedStorage.WaitForChild(this.appearance) as Model;
 		this.model = template.Clone() as Model;
 		this.model.Parent = Workspace;
