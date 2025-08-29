@@ -1,5 +1,6 @@
 import { spawnRandomNoob } from "./Character/noobspawner";
 
-spawnRandomNoob();
-task.wait(5);
-spawnRandomNoob();
+while (true) {
+	spawnRandomNoob();
+	task.wait(5);
+}
